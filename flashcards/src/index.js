@@ -122,7 +122,7 @@ var questions = [
         ]
     },
     {
-        "Which band produced the bet-selling album Brothers In Arms?": [
+        "Which band produced the best-selling album Brothers In Arms?": [
             "dire straits"
         ]
     },
@@ -274,7 +274,7 @@ function getWelcomeResponse(callback) {
     // Be sure to change this for your skill.
     var sessionAttributes = {},
         speechOutput = "Let's learn about music. I will ask you about " + GAME_LENGTH.toString()
-            + " elements, try to get as many right as you can. Let's begin. ",
+            + " questions about music, try to get as many right as you can. Let's begin. ",
         shouldEndSession = false,
 
         gameQuestions = populateGameQuestions(),
@@ -396,7 +396,7 @@ function handleAnswerRequest(intent, session, callback) {
 
         var speechOutputAnalysis = "";
 
-        if (answerSlotValid && intent.slots.Answer.toUpperCase == correctAnswerText.toUpperCase) {
+        if (answerSlotValid && intent.slots.Answer.value.toUpperCase() === correctAnswerText.toUpperCase()) {
             currentScore++;
             speechOutputAnalysis = "correct. ";
         } else {
